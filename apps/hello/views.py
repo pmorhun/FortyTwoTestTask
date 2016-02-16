@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from django.views.generic import ListView
 from apps.hello.models import Person
 
@@ -12,4 +10,3 @@ class PersonView(ListView):
     def get_queryset(self):
         persons = Person.objects.all()
         return persons
-

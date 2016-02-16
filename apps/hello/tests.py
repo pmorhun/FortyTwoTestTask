@@ -8,6 +8,7 @@ class PersonViewTest(TestCase):
     fixtures = ['init_data.json']
 
     def test_hello(self):
+        """Testing response view"""
         response = self.client.get(reverse('hello'))
 
         self.assertEqual(response.status_code, 200)
@@ -23,6 +24,7 @@ class PersonViewTest(TestCase):
         self.assertContains(response, data.contacts)
 
     def test_404(self):
+        """Testing bad response"""
         bad_response = self.client.get('/blah')
         self.assertEqual(bad_response.status_code, 404)
         self.assertTemplateUsed(bad_response, '404.html')
