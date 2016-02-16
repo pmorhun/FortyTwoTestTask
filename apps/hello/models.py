@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Person(models.Model):
@@ -15,3 +16,14 @@ class Person(models.Model):
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
+
+
+class AllRequest(models.Model):
+    """Model for write to DB requests"""
+
+    date = models.DateTimeField(default=timezone.now)
+    url = models.CharField(max_length=256)
+    cookies_dict = models.TextField()
+
+    def __unicode__(self):
+        return u"%s %s" % (self.date, self.url)

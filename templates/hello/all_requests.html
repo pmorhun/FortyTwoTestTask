@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block meta_title %}All requests{% endblock meta_title %}
+
+{% block title %}All requests{% endblock title %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>Date, Time: </td><td>Url: </td><td>Cookies: </td>
+    </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.date }}</td>
+            <td>{{ request.url }}</td>
+            <td>{{ request.cookies_dict }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

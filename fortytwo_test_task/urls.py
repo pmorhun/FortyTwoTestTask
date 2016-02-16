@@ -1,12 +1,13 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from apps.hello.views import PersonView
+from apps.hello.views import PersonView, AllRequestView
 admin.autodiscover()
 
 urlpatterns = patterns(
     '',
     url(r'^$', PersonView.as_view(), name='hello'),
+    url(r'^all_requests$', AllRequestView.as_view(), name='all_requests'),
 
     # Examples:
     # url(r'^$', 'fortytwo_test_task.views.home', name='home'),

@@ -1,7 +1,15 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
-from apps.hello.models import Person
+from apps.hello.models import Person, AllRequest
+
+
+class BadResponse(TestCase):
+    def test_404(self):
+        """Testing bad response"""
+        bad_response = self.client.get('/blah')
+        self.assertEqual(bad_response.status_code, 404)
+        self.assertTemplateUsed(bad_response, '404.html')
 
 
 class PersonViewTest(TestCase):
@@ -10,7 +18,6 @@ class PersonViewTest(TestCase):
     def test_hello(self):
         """Testing response view"""
         response = self.client.get(reverse('hello'))
-
         self.assertEqual(response.status_code, 200)
 
         data = Person.objects.get()
@@ -23,8 +30,17 @@ class PersonViewTest(TestCase):
         self.assertContains(response, data.skype)
         self.assertContains(response, data.contacts)
 
-    def test_404(self):
-        """Testing bad response"""
-        bad_response = self.client.get('/blah')
-        self.assertEqual(bad_response.status_code, 404)
-        self.assertTemplateUsed(bad_response, '404.html')
+
+class ALLRequestTest(TestCase):
+    def setUp(self):
+        AllRequest.objects.create(url='/test', cookies_dict="testsesionid")
+
+    def test_hello(self):
+        """Testing response view AllRequestView"""
+        response = self.client.get(reverse('all_requests'))
+        self.assertEqual(response.status_code, 200)
+
+        data = AllRequest.objects.all()[0]
+        self.assertContains(response, data.url)
+        self.assertContains(response, data.cookies_dict)
+        self.assertContains(response, date(data.date))
