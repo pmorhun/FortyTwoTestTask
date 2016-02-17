@@ -1,22 +1,7 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
 from apps.hello.models import Person
-
-
-class TestPersonView(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.url = reverse('person')
-
-    def test_person_hard(self):
-        """test view with in view"""
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 200)
-
-        self.assertIn('Petro', response.content)
-        self.assertIn('p.etros', response.content)
-        self.assertEqual(len(response.context['persons']), 1)
 
 
 class PersonViewTest(TestCase):
@@ -24,7 +9,7 @@ class PersonViewTest(TestCase):
 
     def test_hello(self):
         """Testing response view"""
-        response = self.client.get(reverse('hello'))
+        response = self.client.get(reverse('person'))
         self.assertEqual(response.status_code, 200)
 
         data = Person.objects.get()

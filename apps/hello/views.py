@@ -1,17 +1,12 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from apps.hello.models import Person
 
 
-def person(request):
+class PersonView(ListView):
+    model = Person
+    template_name = 'hello/persons.html'
+    context_object_name = 'persons'
 
-    persons = {
-                "bio": "I am Peter. Blah, blah, blah....",
-                "first_name": "Petro",
-                "last_name": "Morhun",
-                "contacts": "https://www.facebook.com/petermorhun",
-                "birthday": "1969-11-15",
-                "skype": "p.etros",
-                "jabber": "pmorhun@42cc.co ",
-                "email": "petermorhun@gmail.com"
-                },
-
-    return render(request, 'hello/persons.html', {'persons': persons})
+    def get_queryset(self):
+        persons = Person.objects.all()
+        return persons
