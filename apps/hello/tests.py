@@ -1,46 +1,9 @@
 from django.test import TestCase
-from django.core.urlresolvers import reverse
-from django.template.defaultfilters import date
-from apps.hello.models import Person, AllRequest
+
+# Create your tests here.
 
 
-class BadResponse(TestCase):
-    def test_404(self):
-        """Testing bad response"""
-        bad_response = self.client.get('/blah')
-        self.assertEqual(bad_response.status_code, 404)
-        self.assertTemplateUsed(bad_response, '404.html')
-
-
-class PersonViewTest(TestCase):
-    fixtures = ['init_data.json']
-
-    def test_hello(self):
-        """Testing response view"""
-        response = self.client.get(reverse('hello'))
-        self.assertEqual(response.status_code, 200)
-
-        data = Person.objects.get()
-        self.assertContains(response, data.first_name)
-        self.assertContains(response, data.last_name)
-        self.assertContains(response, date(data.birthday))
-        self.assertContains(response, data.bio)
-        self.assertContains(response, data.email)
-        self.assertContains(response, data.jabber)
-        self.assertContains(response, data.skype)
-        self.assertContains(response, data.contacts)
-
-
-class ALLRequestTest(TestCase):
-    def setUp(self):
-        AllRequest.objects.create(url='/test', cookies_dict="testsesionid")
-
-    def test_hello(self):
-        """Testing response view AllRequestView"""
-        response = self.client.get(reverse('all_requests'))
-        self.assertEqual(response.status_code, 200)
-
-        data = AllRequest.objects.all()[0]
-        self.assertContains(response, data.url)
-        self.assertContains(response, data.cookies_dict)
-        self.assertContains(response, date(data.date))
+class SomeTests(TestCase):
+    def test_math(self):
+        "put docstrings in your tests"
+        assert(2 + 2 == 5)
