@@ -7,28 +7,28 @@
 {% block content %}
 
 
-
+{% for person in persons %}
     <table>
         <tbody>
             <tr>
                 <td>
                     <table>
-                        <tr><td>Surname: </td><td>Morhun</td></tr>
-                        <tr><td>Name: </td><td>Petro</td></tr>
-                        <tr><td>Date of birth: </td><td>Nov. 15. 1969</td></tr>
-                        <tr><td>Bio: </td><td>I am Peter Blah, blah, blah</td></tr>
+                        <tr><td>Surname: </td><td>{{ person.last_name }}</td></tr>
+                        <tr><td>Name: </td><td>{{person.first_name}}</td></tr>
+                        <tr><td>Date of birth: </td><td>{{person.birthday}}</td></tr>
+                        <tr><td>Bio: </td><td>{{person.bio}}</td></tr>
                     </table>
                 </td>
                 <td>
                     <table>
-                        <tr><td>E-mail: </td><td>petermorhun@gmail.com</td></tr>
-                        <tr><td>Jabber: </td><td>pmorhun@42cc.co</td></tr>
-                        <tr><td>Skype: </td><td>p.etros</td></tr>
-                        <tr><td>Contacts: </td><td>https://www.facebook.com/petermorhun</td></tr>
-                    </table>
+                        <tr><td>E-mail: </td><td>{{person.email}}</td></tr>
+                        <tr><td>Jabber: </td><td>{{person.jabber}}</td></tr>
+                        <tr><td>Skype: </td><td>{{person.skype}}</td></tr>
+                        <tr><td>Contacts: </td><td>{{person.contacts}}</td></tr>
+                     </table>
                 </td>
             </tr>
         </tbody>
     </table>
-
+{% endfor %}
 {% endblock content %}

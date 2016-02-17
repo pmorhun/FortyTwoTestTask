@@ -14,7 +14,7 @@ class TestPersonView(TestCase):
 
         self.assertIn('Petro', response.content)
         self.assertIn('p.etros', response.content)
-        self.assertEqual(len(response.context['person']), 1)
+        self.assertEqual(len(response.context['persons']), 1)
 
 
 class BadResponse(TestCase):
