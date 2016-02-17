@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block meta_title %}Person form{% endblock meta_title %}
+
+{% block title %}Form of person{% endblock title %}
+
+{% block content %}
+
+<form action="/your-name/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

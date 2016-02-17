@@ -29,10 +29,9 @@
         </tr>
     </tbody>
 </table>
-
+<a href="{% url 'person_edit' person.id%}">Edit contacts</a>
 {% endfor %}
 <hr>
 <a href="{% url 'all_requests' %}">Requests</a>
-
 
 {% endblock content %}

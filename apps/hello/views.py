@@ -1,4 +1,6 @@
 from django.views.generic import ListView
+from django.shortcuts import redirect, render, get_object_or_404
+from apps.hello.forms import PersonForm
 from apps.hello.models import Person, AllRequest
 
 
@@ -20,3 +22,16 @@ class AllRequestView(ListView):
     def get_queryset(self):
         requests = AllRequest.objects.all().order_by('-date')[:10]
         return requests
+
+
+def person_edit(request, pk):
+    person = get_object_or_404(Person, pk=pk)
+    if request.method == "POST":
+        form = PersonForm(request.POST, instance=person)
+        if form.is_valid():
+            person = form.save(commit=False)
+            person.save()
+            return redirect('hello')
+    else:
+        form = PersonForm(instance=person)
+    return render(request, 'hello/person_form.html', {'form': form})
