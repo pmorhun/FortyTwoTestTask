@@ -11,15 +11,15 @@ class PersonViewTest(TestCase):
         response = self.client.get(reverse('person'))
         self.assertEqual(response.status_code, 200)
 
-        data = Person.objects.get()
-        self.assertContains(response, data.first_name)
-        self.assertContains(response, data.last_name)
-        self.assertContains(response, date(data.birthday))
-        self.assertContains(response, data.bio)
-        self.assertContains(response, data.email)
-        self.assertContains(response, data.jabber)
-        self.assertContains(response, data.skype)
-        self.assertContains(response, data.contacts)
+        td = Person.objects.get()
+        self.assertContains(response, td.first_name)
+        self.assertContains(response, td.last_name)
+        self.assertContains(response, date(td.birthday))
+        self.assertContains(response, td.bio)
+        self.assertContains(response, td.email)
+        self.assertContains(response, td.jabber)
+        self.assertContains(response, td.skype)
+        self.assertContains(response, td.other_contacts)
 
 
 class BadResponse(TestCase):

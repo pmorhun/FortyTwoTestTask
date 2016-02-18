@@ -11,7 +11,7 @@ class Person(models.Model):
     email = models.EmailField()
     jabber = models.CharField(max_length=256)
     skype = models.CharField(max_length=256)
-    contacts = models.TextField()
+    other_contacts = models.TextField()
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
