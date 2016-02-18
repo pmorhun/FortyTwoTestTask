@@ -5,7 +5,6 @@ from apps.hello.models import Person
 
 
 class PersonViewTest(TestCase):
-    fixtures = ['init_data.json']
 
     def test_hello(self):
         """Testing response view"""
