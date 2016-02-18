@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Person'
-        db.create_table(u'hello_person', (
+        db.create_table(u'contact_person', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=256)),
@@ -20,16 +20,16 @@ class Migration(SchemaMigration):
             ('skype', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('other_contacts', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal(u'hello', ['Person'])
+        db.send_create_signal(u'contact', ['Person'])
 
 
     def backwards(self, orm):
         # Deleting model 'Person'
-        db.delete_table(u'hello_person')
+        db.delete_table(u'contact_person')
 
 
     models = {
-        u'hello.person': {
+        u'contact.person': {
             'Meta': {'object_name': 'Person'},
             'bio': ('django.db.models.fields.TextField', [], {}),
             'birthday': ('django.db.models.fields.DateField', [], {'null': 'True'}),
@@ -43,4 +43,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['hello']
+    complete_apps = ['contact']

@@ -1,14 +1,14 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
-from apps.hello.models import Person
+from apps.contact.models import Person
 
 
 class PersonViewTest(TestCase):
 
-    def test_hello(self):
+    def test_contact(self):
         """Testing response view"""
-        response = self.client.get(reverse('person'))
+        response = self.client.get(reverse('contact'))
         self.assertEqual(response.status_code, 200)
 
         td = Person.objects.get()

@@ -19,7 +19,7 @@
   },
 {
     "pk": 1, 
-    "model": "hello.person", 
+    "model": "contact.person", 
     "fields": {
         "bio": "I am Peter. Blah, blah, blah....", 
         "first_name": "Petro", 
