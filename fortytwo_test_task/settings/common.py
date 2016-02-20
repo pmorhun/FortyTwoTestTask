@@ -128,3 +128,7 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
+
+SOUTH_MIGRATION_MODULES = {
+    'auth': 'fortytwo_test_task.migrations.auth',
+}
