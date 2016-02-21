@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^$', PersonView.as_view(), name='contact'),
+    url(r'^requests_list$', 'requests_list', name='requests_list'),
 
     # Examples:
     # url(r'^$', 'fortytwo_test_task.views.home', name='home'),
