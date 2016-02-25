@@ -8,28 +8,24 @@
 
 
 {% for person in persons %}
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <td>
-                    <table>
-                        <tr><td>Surname: </td><td>{{ person.last_name }}</td></tr>
-                        <tr><td>Name: </td><td>{{person.first_name}}</td></tr>
-                        <tr><td>Date of birth: </td><td>{{person.birthday}}</td></tr>
-                        <tr><td>Bio: </td><td>{{person.bio}}</td></tr>
-                    </table>
+                    <p>Surname: {{ person.last_name }}</p>
+                    <p>Name: {{person.first_name}}
+                    <p>Date of birth: {{person.birthday}}</p>
+                    <p>Bio: {{person.bio}}</p>
                 </td>
                 <td>
-                    <table>
-                        <tr><td>E-mail: </td><td>{{person.email}}</td></tr>
-                        <tr><td>Jabber: </td><td>{{person.jabber}}</td></tr>
-                        <tr><td>Skype: </td><td>{{person.skype}}</td></tr>
-                        <tr><td>Contacts: </td><td>{{person.other_contacts}}</td></tr>
-                     </table>
+                    <p>E-mail: {{person.email}}</p>
+                    <p>Jabber: {{person.jabber}}</p>
+                    <p>Skype: {{person.skype}}</p>
+                    <p>Contacts: {{person.other_contacts}}</p>
                 </td>
             </tr>
         </tbody>
     </table>
 {% endfor %}
-<a href="{% url requests_list %}">Requests list</a>
+<a href="{% url 'requests_list' %}">Requests list</a>
 {% endblock content %}

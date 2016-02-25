@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row" id="requests">
+        <div class="col-xs-8">
+            <table class="table" id="rq">
+                {% csrf_token %}
+                {% for event in events %}
+                    <tr>
+                        <td> {{ event.id }} </td>
+                        <td> [{{ event.created|date:"d.m.Y H:i:s"}}] </td>
+                        <td> {{ event.path }} </td>
+                        <td> {{ event.method }} </td>
+                        <td> {{ event.priority }}</td>
+                        <td><input type="checkbox" data-event-status="{{ event.status }}" value="True" checked="checked" /></td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <button id="btn" type="submit" name="reload">Reload</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    var url_viewed = '{% url 'requests_viewed' %}';
+    var url_requests_list = '{% url 'requests_list' %}';
+</script>
+{% endblock %}
+
