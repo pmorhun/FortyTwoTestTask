@@ -13,6 +13,7 @@ class Migration(DataMigration):
         # and orm['appname.ModelName'] for models in other applications.
 
         person = orm['contact.Person'](
+            id=1
             bio="I am Peter. Blah, blah, blah, blah....",
             first_name="Petro",
             last_name="Morhun",
