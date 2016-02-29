@@ -14,4 +14,5 @@ class RequestsLog(models.Model):
     status = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return "%s - %s - %s - %s" % (self.created, self.method, self.path, self.priority)
+        return "%s - %s - %s - %s" % (self.created, self.method,
+                                      self.path, self.priority)
