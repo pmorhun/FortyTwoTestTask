@@ -5,10 +5,13 @@
 {% block title %}42 Coffee Cups Test Assignment{% endblock title %}
 
 {% block content %}
-
+<p><a href="{% url 'edit_person' %}" id="edit-form">Edit contact</a></p>
     <table class="table">
         <tbody>
             <tr>
+                <td>
+                    <img src="/uploads/{{ person.photo }}" class="img-thumbnail" width="200">
+                </td>
                 <td>
                     <p>Surname: {{ person.last_name }}</p>
                     <p>Name: {{person.first_name}}</p>
