@@ -19,7 +19,8 @@ urlpatterns = patterns(
     # User Related urls
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', 'django.contrib.auth.views.login', name="contact_login"),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': 'contact'}, name='contact_logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+        {'next_page': 'contact'}, name='contact_logout'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

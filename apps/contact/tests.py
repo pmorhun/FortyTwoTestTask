@@ -54,6 +54,8 @@ class ContactFormTest(TestCase):
 
     def test_form(self):
         """test fields of form"""
+        # login as admin to access edit form
+        self.client.login(username='admin', password='admin')
         # get form and check few fields there
         response = self.client.get(self.url)
         # check response status
@@ -69,6 +71,8 @@ class ContactFormTest(TestCase):
 
     def test_success_post(self):
         """test post form with valid data"""
+        # login as admin to access edit form
+        self.client.login(username='admin', password='admin')
         response = self.client.post(self.url, {'first_name': 'Upd Name',
                                                'last_name': 'Upd Last Name',
                                                'email': 'upd@test.com',
